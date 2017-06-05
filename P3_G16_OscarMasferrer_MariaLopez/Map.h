@@ -8,8 +8,8 @@
 class Map
 {
 public:
-	const int rows;
-	const int columns;
+	static const int rows = 36;
+	static const int columns = 74;
 
 	char mapa[rows][columns];
 

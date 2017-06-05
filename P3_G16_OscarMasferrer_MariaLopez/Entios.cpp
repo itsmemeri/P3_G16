@@ -5,7 +5,13 @@
 #include "Renderer.hh"
 #include "Input.inl.hh"
 #include "Map.h"
+#include <stack>
 
+struct entioPos {
+	int prevPosX;
+	int prevPosY;
+	char skin;
+};
 
 void Entios::GetEntios(Map mimapa, char skin)
 {
@@ -30,23 +36,51 @@ void Entios::Move(Entios player)
 
 	if (key == 'w' || key == 'W' && posY > 0)
 	{
-		posY--;
-		stamina++;
+		player.posY--;
+		player.stamina++;
+		player.undoPos.emplace(posX, posY, player.skin);
 	}
 	else if (key == 'a' || key == 'A' && posX > 0)
 	{
-		posX--;
-		stamina++;
+		player.posX--;
+		player.stamina++;
+		player.undoPos.emplace(posX, posY, player.skin);
 	}
 	else if (key == 's' || key == 'S' && posY < mimapa.rows - 1)
 	{
-		posY++;
-		stamina++;
+		player.posY++;
+		player.stamina++;
+		player.undoPos.emplace(posX, posY, player.skin);
 	}
 	else if (key == 'd' || key == 'D' && mimapa.columns - 1)
 	{
-		posX++;
-		stamina++;
+		player.posX++;
+		player.stamina++;
+		player.undoPos.emplace(posX, posY, player.skin);
+	}
+}
+
+void Entios::undoMove(Entios player)
+{
+	if (static_cast<char>(enti::getInputKey()) == 'z' || static_cast<char>(enti::getInputKey()) == 'Z')
+	{
+		player.redoPos.emplace(player.posX, player.posY, player.skin);
+		player.posX = undoPos.top.prevPosX;
+		player.posY = undoPos.top.prevPosY;
+		player.stamina++;
+		undoPos.pop();
+	}
+}
+
+void Entios::redoMove(Entios player)
+{
+	if (static_cast<char>(enti::getInputKey()) == 'x' || static_cast<char>(enti::getInputKey()) == 'X')
+	{
+		player.undoPos.emplace(player.posX, player.posY, player.skin);
+		player.posX = redoPos.top.prevPosX;
+		player.posY = redoPos.top.prevPosY;
+		player.stamina--;
+		redoPos.pop();
 	}
 }
 

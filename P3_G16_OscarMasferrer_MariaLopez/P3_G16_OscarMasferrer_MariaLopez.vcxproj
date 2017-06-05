@@ -147,19 +147,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\Maria\Downloads\P3_Recursos\Renderer.cc" />
     <ClCompile Include="Entios.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Renderer.cc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\Maria\Downloads\P3_Recursos\Input.inl.hh" />
-    <ClInclude Include="C:\Users\Maria\Downloads\P3_Recursos\Renderer.hh" />
     <ClInclude Include="Entios.h" />
+    <ClInclude Include="Input.inl.hh" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Renderer.hh" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\Maria\Downloads\P3_Recursos\x64\default.cfg" />
+    <None Include="default.cfg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

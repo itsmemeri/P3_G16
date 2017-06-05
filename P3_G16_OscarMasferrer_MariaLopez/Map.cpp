@@ -30,23 +30,23 @@ void Map::PrintMap()
 		{
 			if (mapa[i][j] == 'X')
 			{
-				enti::cout <<enti::Color::RED << mapa[i][j];
+				enti::cout <</*enti::Color::RED*/ mapa[i][j];
 			}
 			else if (mapa[i][j] == 'O')
 			{
-				enti::cout << enti::Color::CYAN << mapa[i][j];
+				enti::cout << /*enti::Color::CYAN*/ mapa[i][j];
 			}
 			else if (mapa[i][j] == ':')
 			{
-				enti::cout << enti::Color::GREEN << mapa[i][j];
+				enti::cout << /*enti::Color::GREEN*/ mapa[i][j];
 			}
 			else if (mapa[i][j] == '.')
 			{
-				enti::cout << enti::Color::WHITE << mapa[i][j];
+				enti::cout << /*enti::Color::WHITE*/ mapa[i][j];
 			}
 			else
 			{
-				enti::cout << enti::Color::YELLOW << mapa[i][j];
+				enti::cout << /*enti::Color::YELLOW*/ mapa[i][j];
 			}
 		}
 		enti::cout << enti::endl;
@@ -58,8 +58,6 @@ void Map::PrintMap()
 Map::Map()
 {
 	Map::ReadMap();
-	const int rows = 36;
-	const int columns = 74;
 }
 
 
